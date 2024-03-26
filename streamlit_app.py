@@ -49,14 +49,7 @@ import time
 import zipfile
 import pickle
 
-# Page title
-st.set_page_config(page_title='Salary and Skills', page_icon='💰')
-st.title('💰 What are you worth?')
 
-with st.expander('About this app'):
-  st.markdown('**What can this app do?**')
-  st.info('This app les you input your skills and get an estimate of your potential salary. Try adding new skills to see how that would add to your worth.')
-  
 
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
