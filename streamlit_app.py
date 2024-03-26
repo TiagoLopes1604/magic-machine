@@ -135,7 +135,7 @@ if st.button('What am I worth?'):
 
     # Calculate the image size based on the prediction value
     if isinstance(prediction, (int, float)):
-        image_size = int(prediction) * 2  # Adjust the multiplier as needed
+        image_size = int(prediction) /1000  # Adjust the multiplier as needed
     else:
         image_size = 0  # Default image size if prediction is not a number
 
