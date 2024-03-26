@@ -75,3 +75,4 @@ for skill in skills:
 # Add a button to trigger predictions
 if st.sidebar.button("Predict"):
     predict(dropdowns)
+
