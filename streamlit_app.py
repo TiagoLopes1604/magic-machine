@@ -19,5 +19,5 @@ audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
 audio_bytes = audio_file.read()
 st.audio(audio_bytes, format="audio/ogg")
 
-<iframe src="https://giphy.com/embed/l4FB6neryCg5VvsLS" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/spongebob-spongebob-squarepants-season-6-l4FB6neryCg5VvsLS">via GIPHY</a></p>
 
+st.markdown("![Alt Text](https://giphy.com/embed/l4FB6neryCg5VvsLS)")
