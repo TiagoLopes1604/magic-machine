@@ -70,7 +70,7 @@ checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azur
 checkbox_states = {}
 selected_options = st.multiselect('Select skills:', ['SQL', 'Python', 'Excel', 'Power BI', 'Tableau', 'SAS', 'Azure', 'Snowflake', 'AWS', 'Spark', 'Looker', 'Qlik'])
 # Create checkboxes for each label and store their states in the dictionary
-for label in selected_options:
+for label in checkbox_labels:
     checkbox_states[label] = st.checkbox(label)
 
 
