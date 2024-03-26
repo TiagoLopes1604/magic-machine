@@ -156,3 +156,15 @@ if st.button('What am I worth?'):
     except Exception as e:
         st.error(f"Error loading image: {e}")
 
+with open("treasure.gif", "rb") as file:
+            # Read the contents of the file
+            contents = file.read()
+
+        # Encode the contents to base64
+        data_url = base64.b64encode(contents).decode("utf-8")
+
+        # Embed the image in the app with the calculated size
+        st.markdown(
+            f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 500px; height: 500px;">', 
+            unsafe_allow_html=True
+        )
