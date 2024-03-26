@@ -33,6 +33,6 @@ with open("giphy.gif", "rb") as file:
 data_url = base64.b64encode(contents).decode("utf-8")
 
 st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 800px; height: 600px;">', 
+    f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
     unsafe_allow_html=True
 )
