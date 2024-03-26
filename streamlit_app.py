@@ -135,23 +135,24 @@ if st.button('What am I worth?'):
 
     # Calculate the image size based on the prediction value
     if isinstance(prediction, (int, float)):
-        image_size = int(prediction) * 20  # Adjust the multiplier as needed
+        image_size = int(prediction) * 2  # Adjust the multiplier as needed
     else:
         image_size = 0  # Default image size if prediction is not a number
 
     # Read the GIF file
-    with open("treasure.gif", "rb") as file:
-        # Read the contents of the file
-        contents = file.read()
+    try:
+        with open("treasure.gif", "rb") as file:
+            # Read the contents of the file
+            contents = file.read()
 
-    # Encode the contents to base64
-    data_url = base64.b64encode(contents).decode("utf-8")
+        # Encode the contents to base64
+        data_url = base64.b64encode(contents).decode("utf-8")
 
-    # Embed the image in the app with the calculated size
-    st.markdown(
-        f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: {image_size}px; height: {image_size}px;">', 
-        unsafe_allow_html=True
-    )
-
-
+        # Embed the image in the app with the calculated size
+        st.markdown(
+            f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: {image_size}px; height: {image_size}px;">', 
+            unsafe_allow_html=True
+        )
+    except Exception as e:
+        st.error(f"Error loading image: {e}")
 
