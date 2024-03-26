@@ -140,7 +140,15 @@ if st.button('What am I worth?'):
     st.write('Your Predicted Salary:', f"${print_pred}")
     #st.write('Your Predicted Salary:', f"${np.round(prediction, 2)}")
     #st.write("Percentage of available openings:", f"{round(openings['percentage'],2)} %")
-image_size =int(prediction) * 2  # Adjust the multiplier as needed
+if prediction is not None:
+        st.write('Your Predicted Salary:', f"${prediction}")
+
+        # Calculate the image size based on the prediction value
+        if isinstance(prediction, (int, float)):
+            image_size = int(prediction) * 2  # Adjust the multiplier as needed
+        else:
+            image_size = 0  # Default image size if prediction is not a number
+
 with open("treasure.gif", "rb") as file:
     # Read the contents of the file
     contents = file.read()
