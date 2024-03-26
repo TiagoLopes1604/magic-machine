@@ -121,12 +121,13 @@ def predict(selected_options):
 
 # Add a button to trigger the prediction
 if st.button('What am I worth?'):
-    input_df = predict()
-    
+    if selected_options:  # Check if any option is selected
+        # Make predictions based on the selected skills
+        input_df = predict(selected_options)
 
-    prediction = model.predict(input_df)
-    print_pred = str(np.round(prediction, 2))
-    print_pred = print_pred.strip('[]')
+        # Perform prediction using the loaded model
+        prediction = model.predict(input_df)
+   
     
     ##openings = postings()
     
