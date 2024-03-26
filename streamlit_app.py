@@ -124,13 +124,16 @@ def predict(selected_options):
 
 # Add a button to trigger the prediction
 if st.button('What am I worth?'):
-    input_df = predict()  # Call the predict function to get input data
+    input_df = predict(selected_options)  # Pass the selected options to the predict function
     
-    # Predict the salary
     prediction = model.predict(input_df)
+    print_pred = str(np.round(prediction, 2))
+    print_pred = print_pred.strip('[]')
+    
+    ##openings = postings()
     
     # Display the prediction result
-    st.write('Your Predicted Salary:', f"${prediction}")
+    st.write('Your Predicted Salary:', f"${print_pred}")
 
     # Calculate the image size based on the prediction value
     if isinstance(prediction, (int, float)):
