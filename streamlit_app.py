@@ -111,7 +111,7 @@ input_df = predict(selected_options)
 
 # Add a button to trigger the prediction
 if st.button('What am I worth?'):
-    input_df = predict()
+    #input_df = predict()
     
 
     prediction = model.predict(input_df)
