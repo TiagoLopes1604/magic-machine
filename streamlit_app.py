@@ -56,13 +56,13 @@ with open('model.pkl', 'rb') as f:
 
 
 
-df_input_skills = pd.read_csv('inputskills.csv')
+#df_input_skills = pd.read_csv('inputskills.csv')
 
-df_encode = pd.read_csv('df_encode.csv')
-df_opening_count = df_encode.groupby(['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']).count()\
-[["ID"]].reset_index().rename(columns={"ID":"count"}).sort_values("count",ascending=False)
-df_input_skills = df_opening_count.iloc[ :,:12]
-df_output_percent = df_opening_count.iloc[ :,12:]
+#df_encode = pd.read_csv('df_encode.csv')
+#df_opening_count = df_encode.groupby(['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']).count()\
+#[["ID"]].reset_index().rename(columns={"ID":"count"}).sort_values("count",ascending=False)
+#df_input_skills = df_opening_count.iloc[ :,:12]
+#df_output_percent = df_opening_count.iloc[ :,12:]
 
 checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']
 
