@@ -149,7 +149,7 @@ with open("treasure.gif", "rb") as file:
 data_url = base64.b64encode(contents).decode("utf-8")
 
 st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: image_size;">', 
+    f'<img src="data:image/gif;base64,,{data_url}" alt="gif" style="width: {image_size}px; height: {image_size}px;">', 
     unsafe_allow_html=True
 )
 
