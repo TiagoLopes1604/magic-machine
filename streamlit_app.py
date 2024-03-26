@@ -7,6 +7,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import altair as alt
 import time
 import zipfile
+import base64
 
 # Page title
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
@@ -20,9 +21,16 @@ audio_bytes = audio_file.read()
 st.audio(audio_bytes, format="audio/ogg")
 
 
-file_ = open("giphy.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
 
-st.markdown(data_url,unsafe_allow_html=True)
+import base64
+
+# Open the GIF file in binary mode
+with open("giphy.gif", "rb") as file:
+    # Read the contents of the file
+    contents = file.read()
+
+# Encode the contents to base64
+data_url = base64.b64encode(contents).decode("utf-8")
+
+# Display the GIF using the base64-encoded data URL
+st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="gif">', unsafe_allow_html=True)
