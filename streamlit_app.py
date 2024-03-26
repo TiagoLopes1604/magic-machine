@@ -64,7 +64,7 @@ with open('model.pkl', 'rb') as f:
 #df_input_skills = df_opening_count.iloc[ :,:12]
 #df_output_percent = df_opening_count.iloc[ :,12:]
 
-checkbox_labels = ['SQL', 'Python', 'Excel', 'Power BI', 'Tableau', 'SAS', 'Azure', 'Snowflake', 'AWS', 'Spark', 'Looker', 'Qlik']
+checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']
 checkbox_states = {}
 # Create a multiselect widget to select skills
 selected_options = st.multiselect('Select skills:', checkbox_labels)
