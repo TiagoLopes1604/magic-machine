@@ -72,7 +72,7 @@ st.sidebar.markdown("### Select Skills")
 for skill in skills:
     dropdowns[skill] = st.sidebar.checkbox(skill)
 
-# Add a button to trigger predictions
+#  Add a button to trigger predictions
 if st.sidebar.button("Predict"):
     predict(dropdowns)
 
