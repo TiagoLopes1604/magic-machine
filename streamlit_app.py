@@ -140,4 +140,19 @@ if st.button('What am I worth?'):
     st.write('Your Predicted Salary:', f"${print_pred}")
     #st.write('Your Predicted Salary:', f"${np.round(prediction, 2)}")
     #st.write("Percentage of available openings:", f"{round(openings['percentage'],2)} %")
+image_size = prediction * 2  # Adjust the multiplier as needed
+with open("giphy.gif", "rb") as file:
+    # Read the contents of the file
+    contents = file.read()
+
+# Encode the contents to base64
+data_url = base64.b64encode(contents).decode("utf-8")
+
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: image_size;">', 
+    unsafe_allow_html=True
+)
+
+
+
 
