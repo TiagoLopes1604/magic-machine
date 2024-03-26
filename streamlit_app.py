@@ -69,15 +69,13 @@ checkbox_labels = ['SQL', 'Python', 'Excel', 'Power BI', 'Tableau', 'SAS', 'Azur
 # Create a multiselect widget to select skills
 selected_options = st.multiselect('Select skills:', checkbox_labels)
 
-# Output the selected options
-st.write('Selected skills:', selected_options)
 
 
 
 # Define a function to make predictions based on the selected checkboxes
 def predict():
     # Convert the selected checkboxes to the input format required by the model
-    input_data = [[1 if checkbox_states[label] else 0 for label in checkbox_labels]]
+    input_data = [[1 if selected_options else 0 for label in checkbox_labels]]
 
     # Convert input_data to a DataFrame with the same structure as df_input_skills
     input_df = pd.DataFrame(input_data, columns=checkbox_labels)
