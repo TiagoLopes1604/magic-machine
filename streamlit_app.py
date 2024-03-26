@@ -124,43 +124,34 @@ def predict():
 
 
 # Add a button to trigger the prediction
-
 if st.button('What am I worth?'):
-    input_df = predict()
+    input_df = predict()  # Call the predict function to get input data
     
-
+    # Predict the salary
     prediction = model.predict(input_df)
-    print_pred = str(np.round(prediction, 2))
-    print_pred = print_pred.strip('[]')
-    
-    ##openings = postings()
     
     # Display the prediction result
+    st.write('Your Predicted Salary:', f"${prediction}")
 
-    st.write('Your Predicted Salary:', f"${print_pred}")
-    #st.write('Your Predicted Salary:', f"${np.round(prediction, 2)}")
-    #st.write("Percentage of available openings:", f"{round(openings['percentage'],2)} %")
-if prediction is not None:
-        st.write('Your Predicted Salary:', f"${prediction}")
+    # Calculate the image size based on the prediction value
+    if isinstance(prediction, (int, float)):
+        image_size = int(prediction) * 2  # Adjust the multiplier as needed
+    else:
+        image_size = 0  # Default image size if prediction is not a number
 
-        # Calculate the image size based on the prediction value
-        if isinstance(prediction, (int, float)):
-            image_size = int(prediction) * 2  # Adjust the multiplier as needed
-        else:
-            image_size = 0  # Default image size if prediction is not a number
+    # Read the GIF file
+    with open("treasure.gif", "rb") as file:
+        # Read the contents of the file
+        contents = file.read()
 
-with open("treasure.gif", "rb") as file:
-    # Read the contents of the file
-    contents = file.read()
+    # Encode the contents to base64
+    data_url = base64.b64encode(contents).decode("utf-8")
 
-# Encode the contents to base64
-data_url = base64.b64encode(contents).decode("utf-8")
-
-st.markdown(
-    f'<img src="data:image/gif;base64,,{data_url}" alt="gif" style="width: {image_size}px; height: {image_size}px;">', 
-    unsafe_allow_html=True
-)
-
+    # Embed the image in the app with the calculated size
+    st.markdown(
+        f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: {image_size}px; height: {image_size}px;">', 
+        unsafe_allow_html=True
+    )
 
 
 
