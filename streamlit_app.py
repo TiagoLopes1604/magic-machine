@@ -32,5 +32,7 @@ with open("giphy.gif", "rb") as file:
 # Encode the contents to base64
 data_url = base64.b64encode(contents).decode("utf-8")
 
-# Display the GIF using the base64-encoded data URL
-st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="gif">', unsafe_allow_html=True)
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 400px; height: 400px;">', 
+    unsafe_allow_html=True
+)
