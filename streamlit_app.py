@@ -70,7 +70,17 @@ checkbox_states = {}
 selected_options = st.multiselect('Select skills:', checkbox_labels)
 
 # Now you can pass the selected options to the predict function
-input_df = predict(selected_options)
+def predict(selected_options):
+    # Convert the selected skills to the input format required by the model
+    input_data = [[1 if label in selected_options else 0 for label in checkbox_labels]]
+
+    # Convert input_data to a DataFrame with the same structure as df_input_skills
+    input_df = pd.DataFrame(input_data, columns=checkbox_labels)
+
+    # Convert boolean values to integers
+    input_df = input_df.astype(int)
+
+    return input_df
 
     # Find the matching row in df_input_skills
     #matching_row = df_input_skills[df_input_skills.eq(input_df).all(axis=1)]
@@ -111,7 +121,7 @@ input_df = predict(selected_options)
 
 # Add a button to trigger the prediction
 if st.button('What am I worth?'):
-    #input_df = predict()
+    input_df = predict()
     
 
     prediction = model.predict(input_df)
