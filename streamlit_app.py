@@ -40,39 +40,111 @@ st.markdown(
 
 import streamlit as st
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, r2_score
+import altair as alt
+import time
+import zipfile
+import pickle
 
-# Load your input data (df_input_skills) and output data (df_output_percent)
-# Make sure to replace df_input_skills and df_output_percent with your actual dataframes
+# Page title
+st.set_page_config(page_title='Salary and Skills', page_icon='💰')
+st.title('💰 What are you worth?')
 
-# Initialize a dictionary to store the dropdown widgets
-dropdowns = {}
+with st.expander('About this app'):
+  st.markdown('**What can this app do?**')
+  st.info('This app les you input your skills and get an estimate of your potential salary. Try adding new skills to see how that would add to your worth.')
+  
 
-# Create a list of skills
-skills = ['SQL', 'Python', 'Excel', 'Power BI', 'Tableau', 'SAS', 'Azure', 'Snowflake', 'AWS', 'Spark', 'Looker', 'Qlik']
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
-# Create dropdown widgets for each skill and store them in the dictionary
-for skill in skills:
-    dropdowns[skill] = st.checkbox(skill)
 
-# Define a function to make predictions based on the selected skills
-def predict(skills):
-    # Filter the input data based on the selected skills
-    selected_skills = [skill for skill, selected in dropdowns.items() if selected]
-    input_data = df_input_skills[selected_skills].values.reshape(1, -1)
+
+df_input_skills = pd.read_csv('inputskills.csv')
+
+df_encode = pd.read_csv('df_encode.csv')
+df_opening_count = df_encode.groupby(['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']).count()\
+[["ID"]].reset_index().rename(columns={"ID":"count"}).sort_values("count",ascending=False)
+df_input_skills = df_opening_count.iloc[ :,:12]
+df_output_percent = df_opening_count.iloc[ :,12:]
+
+checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']
+
+# Create a dictionary to store the checkbox states
+checkbox_states = {}
+
+# Create checkboxes for each label and store their states in the dictionary
+for label in checkbox_labels:
+    checkbox_states[label] = st.checkbox(label)
+
+
+
+# Define a function to make predictions based on the selected checkboxes
+def predict():
+    # Convert the selected checkboxes to the input format required by the model
+    input_data = [[1 if checkbox_states[label] else 0 for label in checkbox_labels]]
+
+    # Convert input_data to a DataFrame with the same structure as df_input_skills
+    input_df = pd.DataFrame(input_data, columns=checkbox_labels)
+
+    # Convert boolean values to integers
+    input_df = input_df.astype(int)
+
+    # Find the matching row in df_input_skills
+    #matching_row = df_input_skills[df_input_skills.eq(input_df).all(axis=1)]
+
+    # If a matching row is found, display the output
+    #if not matching_row.empty:
+       # matching_index = matching_row.index[0]
+       # final_output = df_output_percent.loc[matching_index]
+       # st.write("Job Opening Count:", final_output['count'])
+       # st.write("Percentage of available openings:", f"{round(final_output['percentage'],2)} %")
+   # else:
+      #  st.write("No matching row found in the input data.")
+    return input_df
+
+
+# Find the matching row in df_input_skills
+#def postings():
+    #input_data = [[1 if checkbox_states[label] else 0 for label in checkbox_labels]]
+
+    # Convert input_data to a DataFrame with the same structure as df_input_skills
+    #input_df = pd.DataFrame(input_data, columns=checkbox_labels)
+
+    # Convert boolean values to integers
+    #input_df = input_df.astype(int)
+    #matching_row = df_input_skills[df_input_skills.eq(input_df).all(axis=1)]
+
+    # If a matching row is found, display the output
+    #if not matching_row.empty:
+       #matching_index = matching_row.index[0]
+       #final_output = df_output_percent.loc[matching_index]
+       #st.write("Job Opening Count:", final_output['count'])
+       #st.write("Percentage of available openings:", f"{round(final_output['percentage'],2)} %")
+       #return final_output
+    #else:
+       #st.write("No matching row found in the input data.")
+      # return None
+
+
+# Add a button to trigger the prediction
+
+if st.button('What am I worth?'):
+    input_df = predict()
     
-    # Make a prediction using the linear regression model
-    prediction = model.predict(input_data)
+
+    prediction = model.predict(input_df)
+    print_pred = str(np.round(prediction, 2))
+    print_pred = print_pred.strip('[]')
     
-    # Print the prediction
-    st.write("Predicted salary:", f'${round(prediction[0],2)}')
+    ##openings = postings()
+    
+    # Display the prediction result
 
-# Display the dropdown widgets
-st.sidebar.markdown("### Select Skills")
-for skill in skills:
-    dropdowns[skill] = st.sidebar.checkbox(skill)
-
-#  Add a button to trigger predictions
-if st.sidebar.button("Predict"):
-    predict(dropdowns)
+    st.write('Your Predicted Salary:', f"${print_pred}")
+    #st.write('Your Predicted Salary:', f"${np.round(prediction, 2)}")
+    #st.write("Percentage of available openings:", f"{round(openings['percentage'],2)} %")
 
