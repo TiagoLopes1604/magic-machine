@@ -21,10 +21,15 @@ def predict(selected_options):
     input_df = input_df.astype(int)
     return input_df
 
-# Add a button to trigger the prediction
-if st.button('What am I worth?'):
+# Define a function to make predictions based on the selected skills
+def make_prediction(selected_options):
     input_df = predict(selected_options)  # Prepare input data
     prediction = model.predict(input_df)  # Make prediction
+    return prediction
+
+# Add a button to trigger the prediction
+if st.button('What am I worth?'):
+    prediction = make_prediction(selected_options)  # Get the prediction
 
     # Display the predicted salary
     st.write('Your Predicted Salary:', f"${prediction}")
