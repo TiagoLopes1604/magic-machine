@@ -169,4 +169,4 @@ with open("treasure.gif", "rb") as file:
         st.markdown(
             f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 500px; height: 500px;">', 
             unsafe_allow_html=True
-        ) thats all the code.solve it
+        ) 
