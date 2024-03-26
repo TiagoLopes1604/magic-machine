@@ -127,6 +127,8 @@ if st.button('What am I worth?'):
 
         # Perform prediction using the loaded model
         prediction = model.predict(input_df)
+         print_pred = str(np.round(prediction, 2))
+         print_pred = print_pred.strip('[]')
    
     
     ##openings = postings()
