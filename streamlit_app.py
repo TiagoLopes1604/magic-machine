@@ -65,17 +65,17 @@ with open('model.pkl', 'rb') as f:
 #df_output_percent = df_opening_count.iloc[ :,12:]
 
 checkbox_labels = ['SQL', 'Python', 'Excel', 'Power BI', 'Tableau', 'SAS', 'Azure', 'Snowflake', 'AWS', 'Spark', 'Looker', 'Qlik']
-
+checkbox_states = {}
 # Create a multiselect widget to select skills
-selected_options = st.multiselect('Select skills:', checkbox_labels)
-
+#selected_options = st.multiselect('Select skills:', checkbox_labels)
+for label in checkbox_states[label]=st.multiselect('Select skills:', checkbox_labels)
 
 
 
 # Define a function to make predictions based on the selected checkboxes
-def predict(selected_options):
+def predict():
     # Convert the selected skills to the input format required by the model
-    input_data = [[1 if label in selected_options else 0 for label in checkbox_labels]]
+    input_data = [[1 if checkbox_states[label] else 0 for label in checkbox_labels]]
 
     # Convert input_data to a DataFrame with the same structure as df_input_skills
     input_df = pd.DataFrame(input_data, columns=checkbox_labels)
@@ -124,8 +124,9 @@ def predict(selected_options):
 
 # Add a button to trigger the prediction
 if st.button('What am I worth?'):
-    input_df = predict(selected_options)  # Pass the selected options to the predict function
+    input_df = predict()
     
+
     prediction = model.predict(input_df)
     print_pred = str(np.round(prediction, 2))
     print_pred = print_pred.strip('[]')
