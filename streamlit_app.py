@@ -96,7 +96,7 @@ def predict(selected_options):
        # st.write("Percentage of available openings:", f"{round(final_output['percentage'],2)} %")
    # else:
       #  st.write("No matching row found in the input data.")
-    return input_df
+   # return input_df
 
 
 # Find the matching row in df_input_skills
