@@ -158,7 +158,7 @@ if st.button('What am I worth?'):
 
 with open("treasure.gif", "rb") as file:
             # Read the contents of the file
-            contents = file.read()
+        contents = file.read()
 
         # Encode the contents to base64
         data_url = base64.b64encode(contents).decode("utf-8")
