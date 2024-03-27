@@ -156,66 +156,61 @@ if page == "Home":
            ) 
 
 elif page == "About":
-     st.header("About Page")
-     st.write("This is the about page. Here you can learn more about our app.")
-     st.subheader('Find out what percentage of data anaylst job offers you can cover with your skillset!')
-   # Load data
-     df = pd.read_csv('skills_occurences_income.csv')
-   # df.year = df.year.astype('int')
-   # Function to calculate percentage
-      def calculate_percentage(skill_input):
-          total_occurrences = df['count_occurrences'].sum()
-          skill_occurrences = df.loc[df['skill'] == skill_input, 'count_occurrences'].iloc[0]
-          skill_percentage = (skill_occurrences / total_occurrences) * 100
-          return skill_percentage
-   # Function to calculate total percentage for multiple skills
-      def calculate_total_percentage(skills_input):
-          total_percentage = 0
-          for skill in skills_input:
-              total_percentage += calculate_percentage(skill)
-          return total_percentage
-   # Input widgets
-   ## Genres selection
-      skills_list = df.skill.unique()
-      skills_selection = st.multiselect('Select skills', skills_list, ['python','sql'])
-      # Calculate and display total percentage for selected skills
-      if skills_selection:
-          total_percentage = calculate_total_percentage(skills_selection)
-          st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
-      # Calculate and display remainig percentage for selected skills
-      if skills_selection:
-          remaining_percentage = 100 - total_percentage
-          st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
-      #plt.figure(figsize=(8, 6))
-      #plt.bar('Total', total_percentage, color='#EB396A', label='Selected Skills')
-      #plt.bar('Total', remaining_percentage, color='#65BCDA', label='Skills Still to Learn', bottom=total_percentage)
-      #plt.xlabel('Category')
-      #plt.ylabel('Percentage')
-      #plt.legend()
-      #plt.show()
-      
-      
-      bar_colors = ['#EB396A', '#65BCDA']
-      # Calculate total
-      total = total_percentage + remaining_percentage
-      
-      # Create a Plotly figure
-      fig = go.Figure()
-      
-      # Add traces for each category
-      fig.add_trace(go.Bar(x=['Total'], y=[total_percentage], name='Selected Skills', marker=dict(color=bar_colors[0])))
-      fig.add_trace(go.Bar(x=['Total'], y=[remaining_percentage], name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
-      
-      # Update layout
-      fig.update_layout(
-          title='Skills Overview',
-          xaxis_title='Category',
-          yaxis_title='Percentage',
-          barmode='stack'
-      )
-      
-      # Display the chart using Streamlit
-      st.plotly_chart(fig, use_container_width=True)
+    st.header("About Page")
+    st.write("This is the about page. Here you can learn more about our app.")
+    st.subheader('Find out what percentage of data analyst job offers you can cover with your skillset!')
+    
+    # Load data
+    df = pd.read_csv('skills_occurences_income.csv')
+    
+    # Function to calculate percentage
+    def calculate_percentage(skill_input):
+        total_occurrences = df['count_occurrences'].sum()
+        skill_occurrences = df.loc[df['skill'] == skill_input, 'count_occurrences'].iloc[0]
+        skill_percentage = (skill_occurrences / total_occurrences) * 100
+        return skill_percentage
+    
+    # Function to calculate total percentage for multiple skills
+    def calculate_total_percentage(skills_input):
+        total_percentage = 0
+        for skill in skills_input:
+            total_percentage += calculate_percentage(skill)
+        return total_percentage
+    
+    # Input widgets
+    ## Skills selection
+    skills_list = df.skill.unique()
+    skills_selection = st.multiselect('Select skills', skills_list, ['python', 'sql'])
+    
+    # Calculate and display total percentage for selected skills
+    if skills_selection:
+        total_percentage = calculate_total_percentage(skills_selection)
+        st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
+    
+    # Calculate and display remaining percentage for selected skills
+    if skills_selection:
+        remaining_percentage = 100 - total_percentage
+        st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
+    
+    bar_colors = ['#EB396A', '#65BCDA']
+    
+    # Calculate total
+    total = total_percentage + remaining_percentage
+    
+    # Create a Plotly figure
+    fig = go.Figure()
+    
+    # Add traces for each category
+    fig.add_trace(go.Bar(x=['Total'], y=[total_percentage], name='Selected Skills', marker=dict(color=bar_colors[0])))
+    fig.add_trace(go.Bar(x=['Total'], y=[remaining_percentage], name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
+    
+    # Update layout
+    fig.update_layout(
+        title='Skills Overview',
+        xaxis_title='Category',
+        yaxis_title='Percentage',
+        barmode
+
 
 
 
