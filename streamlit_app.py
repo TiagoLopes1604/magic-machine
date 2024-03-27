@@ -9,6 +9,7 @@ import time
 import zipfile
 import base64
 import pickle
+import matplotlib.pyplot as plt
 # Page title
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
@@ -52,14 +53,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Job Market Insights</div>", unsafe_allow_html=True)
-st.image('jobs_per_week.PNG', caption='Jobs postings per week', width=700, use_column_width=False)
-st.image('slide3,2.PNG', caption='Jobs postings per weekday and per platform', width=700, use_column_width=False)
-st.image('slide4.PNG', caption='Jobs postings per location', width=700, use_column_width=False)
+#st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Job Market Insights</div>", unsafe_allow_html=True)
+#st.image('jobs_per_week.PNG', caption='Jobs postings per week', width=700, use_column_width=False)
+#st.image('slide3,2.PNG', caption='Jobs postings per weekday and per platform', width=700, use_column_width=False)
+#st.image('slide4.PNG', caption='Jobs postings per location', width=700, use_column_width=False)
 
-st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Required Skills</div>", unsafe_allow_html=True)
-st.image('slide5a.PNG', caption='Number of mentions per skill', width=700, use_column_width=False)
-st.image('slide5b.PNG', caption='% by Category and Skill mentions over time', width=700, use_column_width=False)
+#st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Required Skills</div>", unsafe_allow_html=True)
+#st.image('slide5a.PNG', caption='Number of mentions per skill', width=700, use_column_width=False)
+#st.image('slide5b.PNG', caption='% by Category and Skill mentions over time', width=700, use_column_width=False)
 
 
 
@@ -165,3 +166,38 @@ with open("treasure.gif", "rb") as file:
             unsafe_allow_html=True
         ) 
 
+st.subheader('Find out what percentage of data anaylst job offers you can cover with your skillset!')
+# Load data
+df = pd.read_csv('data/skills_occurences_income.csv')
+# df.year = df.year.astype('int')
+# Function to calculate percentage
+def calculate_percentage(skill_input):
+    total_occurrences = df['count_occurrences'].sum()
+    skill_occurrences = df.loc[df['skill'] == skill_input, 'count_occurrences'].iloc[0]
+    skill_percentage = (skill_occurrences / total_occurrences) * 100
+    return skill_percentage
+# Function to calculate total percentage for multiple skills
+def calculate_total_percentage(skills_input):
+    total_percentage = 0
+    for skill in skills_input:
+        total_percentage += calculate_percentage(skill)
+    return total_percentage
+# Input widgets
+## Genres selection
+skills_list = df.skill.unique()
+skills_selection = st.multiselect('Select skills', skills_list, ['python','sql'])
+# Calculate and display total percentage for selected skills
+if skills_selection:
+    total_percentage = calculate_total_percentage(skills_selection)
+    st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
+# Calculate and display remainig percentage for selected skills
+if skills_selection:
+    remaining_percentage = 100 - total_percentage
+    st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
+plt.figure(figsize=(8, 6))
+plt.bar('Total', total_percentage, color='#EB396A', label='Selected Skills')
+plt.bar('Total', remaining_percentage, color='#65BCDA', label='Skills Still to Learn', bottom=total_percentage)
+plt.xlabel('Category')
+plt.ylabel('Percentage')
+plt.legend()
+plt.show()
