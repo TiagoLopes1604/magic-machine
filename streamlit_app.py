@@ -17,28 +17,12 @@ import plotly.graph_objs as go
 # Set page configuration
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 
-st.markdown(
-    """
-<style>
-.css-nzvw1x {
-    background-color: #061E42 !important;
-    background-image: none !important;
-}
-.css-1aw8i8e {
-    background-image: none !important;
-    color: #FFFFFF !important
-}
-.css-ecnl2d {
-    background-color: #496C9F !important;
-    color: #496C9F !important
-}
-.css-15zws4i {
-    background-color: #496C9F !important;
-    color: #FFFFFF !important
-}
-</style>
-""",
-    unsafe_allow_html=True
+st.set_page_config(
+    page_title="Magic Machine",
+    page_icon="🧙‍♂️",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    background_color="#496C9F",  # Set your desired background color here
 )
 
 # Add title to the page
