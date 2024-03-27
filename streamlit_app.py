@@ -37,7 +37,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image('jobs_per_week.PNG', caption='Jobs postings per week')
+st.markdown('Job Market Insights')
+st.image('jobs_per_week.PNG', caption='Jobs postings per week',style="width: 700px; height: 500px)
 
 
 
