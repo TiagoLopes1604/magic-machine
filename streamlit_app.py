@@ -185,37 +185,35 @@ elif page == "SkillSet":
     skills_selection = st.multiselect('Select skills', skills_list, ['python', 'sql'])
     
     # Calculate and display total percentage for selected skills
-    if skills_selection:
+     if skills_selection:
         total_percentage = calculate_total_percentage(skills_selection)
         st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
-    
-    # Calculate and display remaining percentage for selected skills
-    if skills_selection:
         remaining_percentage = 100 - total_percentage
         st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
     
-    bar_colors = ['#EB396A', '#65BCDA']
-    
-    # Calculate total
-    total = total_percentage + remaining_percentage
-    
-    # Create a Plotly figure
-    fig = go.Figure()
-    
-    # Add traces for each category
-    fig.add_trace(go.Bar(x=['Total'], y=[total_percentage], name='Selected Skills', marker=dict(color=bar_colors[0])))
-    fig.add_trace(go.Bar(x=['Total'], y=[remaining_percentage], name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
-    
-     # Update layout
-    fig.update_layout(
-        title='Skills Overview',
-        xaxis_title='Category',
-        yaxis_title='Percentage',
-        barmode='stack'
-    )
-    
-    # Display the chart using Streamlit
-    st.plotly_chart(fig, use_container_width=True)
+        bar_colors = ['#EB396A', '#65BCDA']
+        # Calculate total
+        total = total_percentage + remaining_percentage
+        
+        # Create a Plotly figure
+        fig = go.Figure()
+        
+        # Add traces for each category
+        fig.add_trace(go.Bar(x=['Total'], y=[total_percentage], name='Selected Skills', marker=dict(color=bar_colors[0])))
+        fig.add_trace(go.Bar(x=['Total'], y=[remaining_percentage], name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
+        
+        # Update layout
+        fig.update_layout(
+            title='Skills Overview',
+            xaxis_title='Category',
+            yaxis_title='Percentage',
+            barmode='stack'
+        )
+        
+        # Display the chart using Streamlit
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.write("Please select at least one skill.")
 
    # Open the GIF file in binary mode
     with open("study.gif", "rb") as file:
