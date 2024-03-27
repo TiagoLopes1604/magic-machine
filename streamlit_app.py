@@ -13,6 +13,8 @@ import pickle
 import plotly.graph_objs as go
 # Page title
 
+
+st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.markdown(
     """
     <style>
@@ -23,7 +25,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
 
 
