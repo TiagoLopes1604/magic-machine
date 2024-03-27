@@ -15,7 +15,7 @@ import plotly.graph_objs as go
 
 
 # Set page configuration
-st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
+#st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 
 st.set_page_config(
     page_title="Magic Machine",
