@@ -176,7 +176,7 @@ st.markdown(
     """
     <style>
     body {
-        background-color: #f0f2f6; /* You can change the color code here */
+        background-color: #f0f2f6; /* light gray color */
     }
     </style>
     """,
