@@ -185,7 +185,7 @@ elif page == "SkillSet":
     skills_selection = st.multiselect('Select skills', skills_list, ['python', 'sql'])
     
     # Calculate and display total percentage for selected skills
-     if skills_selection:
+   if skills_selection:
         total_percentage = calculate_total_percentage(skills_selection)
         st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
         remaining_percentage = 100 - total_percentage
