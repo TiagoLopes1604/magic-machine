@@ -13,7 +13,20 @@ import pickle
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
 
+# Page title
+st.title('Streamlit Multi-Page App')
 
+# Add a sidebar with navigation links
+page = st.sidebar.radio("Navigate", ["Home", "About"])
+
+# Render different pages based on user selection
+if page == "Home":
+    st.header("Home Page")
+    st.write("Welcome to the home page!")
+
+elif page == "About":
+    st.header("About Page")
+    st.write("This is the about page. Here you can learn more about our app."
 
 st.markdown('**What can this app do?**')
 st.info('"Introducing Magic Machine, your go-to companion for navigating the dynamic world of data analytics careers! With Magic Machine, new data analysts can unlock the secrets to landing their dream job in this ever-evolving industry.Providing expert insights on industry trends, Magic Machine empowers aspiring data professionals to conquer the job market with confidence. Get ready to embark on your career journey with Magic Machine – where data meets destiny!')
