@@ -127,7 +127,7 @@ if page == "Calculate your treasure":
    
    
   # Add a button to trigger the prediction
-if st.button('What's my bounty?'):
+if st.button("What's my bounty?"):
     if selected_options:  # Check if any option is selected
         # Make predictions based on the selected skills
         input_df = predict(selected_options)
