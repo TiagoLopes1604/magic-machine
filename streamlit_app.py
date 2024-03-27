@@ -71,7 +71,7 @@ if page == "Calculate your treasure":
    checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']
    checkbox_states = {}
    # Create a multiselect widget to select skills
-   selected_options = st.multiselect('Select skills:', checkbox_labels)
+   selected_options = st.multiselect("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Job Market Insights</div>", checkbox_labels)
    
    # Now you can pass the selected options to the predict function
    def predict(selected_options):
