@@ -20,13 +20,7 @@ st.title('🧙‍♂️ Magic Machine')
 # Add a sidebar with navigation links
 page = st.sidebar.radio("Navigate", ["Calculate your treasure", "SkillSet"])
 
-# Set the page configuration
-st.set_page_config(
-    page_title="US Population Dashboard",
-    page_icon="🏂",
-    layout="wide",  # You can adjust the layout as needed
-    initial_sidebar_state="expanded"  # You can set it to "expanded" or "collapsed"
-)
+
 
 alt.themes.enable("dark")
 # Render different pages based on user selection
