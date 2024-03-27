@@ -26,7 +26,7 @@ if page == "Home":
 
 elif page == "About":
     st.header("About Page")
-    st.write("This is the about page. Here you can learn more about our app."
+    st.write("This is the about page. Here you can learn more about our app.")
 
 st.markdown('**What can this app do?**')
 st.info('"Introducing Magic Machine, your go-to companion for navigating the dynamic world of data analytics careers! With Magic Machine, new data analysts can unlock the secrets to landing their dream job in this ever-evolving industry.Providing expert insights on industry trends, Magic Machine empowers aspiring data professionals to conquer the job market with confidence. Get ready to embark on your career journey with Magic Machine – where data meets destiny!')
