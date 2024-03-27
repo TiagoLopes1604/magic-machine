@@ -8,7 +8,7 @@ import altair as alt
 import time
 import zipfile
 import base64
-
+import pickle
 # Page title
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
@@ -37,16 +37,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image('PROJECT - Data Analyst Job Postings_1. Job Market Insights _ Posts and Platforms_Time series.csv', caption='Graph from Looker Studio')
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error, r2_score
-import altair as alt
-import time
-import zipfile
-import pickle
+st.image('jobs_per_week.PNG', caption='Jobs postings per week')
+
+
 
 
 
