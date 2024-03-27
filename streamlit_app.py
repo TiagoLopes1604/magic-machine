@@ -75,7 +75,7 @@ if page == "Calculate your treasure":
        label="<div style='text-align: center; font-size: 24px; font-weight: bold;'>Select skills:</div>",
        options=checkbox_labels,
        format_func=lambda x: x,
-       # Other arguments like key, default, etc. can be added as needed
+       unsafe_allow_html=True
     )
 
    
