@@ -37,8 +37,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-import streamlit as st
+st.image('PROJECT - Data Analyst Job Postings_1. Job Market Insights _ Posts and Platforms_Time series.csv', caption='Graph from Looker Studio')
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
