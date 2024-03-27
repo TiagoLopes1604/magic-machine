@@ -15,15 +15,9 @@ import plotly.graph_objs as go
 
 
 # Set page configuration
-#st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
+st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 
-st.set_page_config(
-    page_title="Magic Machine",
-    page_icon="🧙‍♂️",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    background_color="#496C9F",  # Set your desired background color here
-)
+
 
 # Add title to the page
 st.title('🧙‍♂️ Magic Machine')
