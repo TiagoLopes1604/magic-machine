@@ -14,7 +14,10 @@ import plotly.graph_objs as go
 # Page title
 
 
+# Set page configuration
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
+
+# Add custom CSS to change the background color of the entire page
 st.markdown(
     """
     <style>
@@ -25,157 +28,68 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Add title to the page
 st.title('🧙‍♂️ Magic Machine')
-
-
 
 # Add a sidebar with navigation links
 page = st.sidebar.radio("Navigate", ["Calculate your treasure", "SkillSet"])
 
-
-
-alt.themes.enable("dark")
 # Render different pages based on user selection
 if page == "Calculate your treasure":
+   # Add your content here
    st.markdown('**What can this app do?**')
    st.info('"Introducing Magic Machine, your go-to companion for navigating the dynamic world of data analytics careers! With Magic Machine, new data analysts can unlock the secrets to landing their dream job in this ever-evolving industry.Providing expert insights on industry trends, Magic Machine empowers aspiring data professionals to conquer the job market with confidence. Get ready to embark on your career journey with Magic Machine – where data meets destiny!')
 
+   # Add audio file
    audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
    audio_bytes = audio_file.read()
    st.audio(audio_bytes, format="audio/ogg")
 
-   # Open the GIF file in binary mode
+   # Add GIF image
    with open("giphy.gif", "rb") as file:
-       # Read the contents of the file
        contents = file.read()
+       data_url = base64.b64encode(contents).decode("utf-8")
+       st.markdown(
+           f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
+           unsafe_allow_html=True
+       )
    
-   # Encode the contents to base64
-   data_url = base64.b64encode(contents).decode("utf-8")
-   
-   st.markdown(
-       f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
-       unsafe_allow_html=True
-   )
-   
-   #st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Job Market Insights</div>", unsafe_allow_html=True)
-   #st.image('jobs_per_week.PNG', caption='Jobs postings per week', width=700, use_column_width=False)
-   #st.image('slide3,2.PNG', caption='Jobs postings per weekday and per platform', width=700, use_column_width=False)
-   #st.image('slide4.PNG', caption='Jobs postings per location', width=700, use_column_width=False)
-   
-   #st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Required Skills</div>", unsafe_allow_html=True)
-   #st.image('slide5a.PNG', caption='Number of mentions per skill', width=700, use_column_width=False)
-   #st.image('slide5b.PNG', caption='% by Category and Skill mentions over time', width=700, use_column_width=False)
-   
-   
-   
-   
-   
-   with open('model.pkl', 'rb') as f:
-       model = pickle.load(f)
-   
-   
-   
-   #df_input_skills = pd.read_csv('inputskills.csv')
-   
-   #df_encode = pd.read_csv('df_encode.csv')
-   #df_opening_count = df_encode.groupby(['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']).count()\
-   #[["ID"]].reset_index().rename(columns={"ID":"count"}).sort_values("count",ascending=False)
-   #df_input_skills = df_opening_count.iloc[ :,:12]
-   #df_output_percent = df_opening_count.iloc[ :,12:]
-   
+   # Add multiselect widget for selecting skills
    checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']
-   checkbox_states = {}
-   # Create a multiselect widget to select skills
    st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Choose your skills</div>", unsafe_allow_html=True)
    selected_options = st.multiselect("", checkbox_labels)
 
-
-   
-   # Now you can pass the selected options to the predict function
+   # Define function to predict salary based on selected skills
    def predict(selected_options):
-       # Convert the selected skills to the input format required by the model
        input_data = [[1 if label in selected_options else 0 for label in checkbox_labels]]
-   
-       # Convert input_data to a DataFrame with the same structure as df_input_skills
        input_df = pd.DataFrame(input_data, columns=checkbox_labels)
-   
-       # Convert boolean values to integers
        input_df = input_df.astype(int)
-   
        return input_df
-   
-       # Find the matching row in df_input_skills
-       #matching_row = df_input_skills[df_input_skills.eq(input_df).all(axis=1)]
-   
-       # If a matching row is found, display the output
-       #if not matching_row.empty:
-          # matching_index = matching_row.index[0]
-          # final_output = df_output_percent.loc[matching_index]
-          # st.write("Job Opening Count:", final_output['count'])
-          # st.write("Percentage of available openings:", f"{round(final_output['percentage'],2)} %")
-      # else:
-         #  st.write("No matching row found in the input data.")
-      # return input_df
-   
-   
-   # Find the matching row in df_input_skills
-   #def postings():
-       #input_data = [[1 if checkbox_states[label] else 0 for label in checkbox_labels]]
-   
-       # Convert input_data to a DataFrame with the same structure as df_input_skills
-       #input_df = pd.DataFrame(input_data, columns=checkbox_labels)
-   
-       # Convert boolean values to integers
-       #input_df = input_df.astype(int)
-       #matching_row = df_input_skills[df_input_skills.eq(input_df).all(axis=1)]
-   
-       # If a matching row is found, display the output
-       #if not matching_row.empty:
-          #matching_index = matching_row.index[0]
-          #final_output = df_output_percent.loc[matching_index]
-          #st.write("Job Opening Count:", final_output['count'])
-          #st.write("Percentage of available openings:", f"{round(final_output['percentage'],2)} %")
-          #return final_output
-       #else:
-          #st.write("No matching row found in the input data.")
-         # return None
-   
-   
-  # Add a button to trigger the prediction
-    if st.button("What's my bounty?"):
-        if selected_options:  # Check if any option is selected
-            # Make predictions based on the selected skills
-            input_df = predict(selected_options)
-    
-            # Perform prediction using the loaded model
-            prediction = model.predict(input_df)
-            print_pred = str(np.round(prediction, 2))
-            print_pred = print_pred.strip('[]')
-    
-            # Display the prediction result
-            st.write(
-                "<div style='text-align:center;'>"
-                "<p style='font-size:70px;color:Black;'>Your Predicted Salary:</p>"
-                f"<p style='font-size:125px;color:Red;display:inline;'>${print_pred}</p>"
-                "</div>",
-                unsafe_allow_html=True
-            )
-    
-            # Display the GIF after the prediction
-            with open("treasure.gif", "rb") as file:
-                # Read the contents of the file
-                contents = file.read()
-    
-                # Encode the contents to base64
-                data_url = base64.b64encode(contents).decode("utf-8")
-    
-                # Embed the image in the app with the calculated size
-                st.markdown(
-                    f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">',
-                    unsafe_allow_html=True
-                )
-        else:
-            st.write("Please select at least one skill.")
+
+   # Add button to trigger prediction
+   if st.button("What's my bounty?"):
+       if selected_options:
+           input_df = predict(selected_options)
+           prediction = model.predict(input_df)
+           print_pred = str(np.round(prediction, 2))
+           print_pred = print_pred.strip('[]')
+           st.write(
+               "<div style='text-align:center;'>"
+               "<p style='font-size:70px;color:Black;'>Your Predicted Salary:</p>"
+               f"<p style='font-size:125px;color:Red;display:inline;'>${print_pred}</p>"
+               "</div>",
+               unsafe_allow_html=True
+           )
+           with open("treasure.gif", "rb") as file:
+               contents = file.read()
+               data_url = base64.b64encode(contents).decode("utf-8")
+               st.markdown(
+                   f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">',
+                   unsafe_allow_html=True
+               )
+       else:
+           st.write("Please select at least one skill.")
 
 elif page == "SkillSet":
     st.header('Find out what percentage of data analyst job offers you can cover with your skillset!')
