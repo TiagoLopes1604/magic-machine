@@ -10,6 +10,7 @@ import zipfile
 import base64
 import pickle
 #import matplotlib.pyplot as plt
+import plotly.graph_objs as go
 # Page title
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
@@ -202,10 +203,21 @@ if skills_selection:
 #plt.legend()
 #plt.show()
 
-st.bar_chart(
-    data={
-        'Total': total_percentage + remaining_percentage
-    },
-    colors=bar_colors,
-    use_container_width=True
+# Define custom colors
+bar_colors = ['#EB396A', '#65BCDA']
+
+# Create a bar chart using Plotly
+fig = go.Figure()
+fig.add_trace(go.Bar(x=categories, y=total_percentage, name='Selected Skills', marker=dict(color=bar_colors[0])))
+fig.add_trace(go.Bar(x=categories, y=remaining_percentage, name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
+
+# Update layout
+fig.update_layout(
+    title='Skills Overview',
+    xaxis_title='Category',
+    yaxis_title='Percentage',
+    barmode='stack'
 )
+
+# Display the chart using Streamlit
+st.plotly_chart(fig, use_container_width=True)
