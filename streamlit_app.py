@@ -142,7 +142,8 @@ if page == "Calculate your treasure":
        
        # Display the prediction result
        st.write('Your Predicted Salary:', f"${print_pred}")
-   
+       st.write('Your Predicted Salary:', f"<p style='font-size:50px;color:Red;'>${print_pred}</p>", 
+    unsafe_allow_html=True)
       
    
    with open("treasure.gif", "rb") as file:
