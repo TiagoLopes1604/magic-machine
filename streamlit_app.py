@@ -11,7 +11,7 @@ import base64
 import pickle
 #import matplotlib.pyplot as plt
 import plotly.graph_objs as go
-# Page title
+
 
 
 # Set page configuration
