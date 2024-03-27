@@ -159,7 +159,6 @@ if page == "Calculate your treasure":
            ) 
 
 elif page == "SkillSet":
-    
     st.header('Find out what percentage of data analyst job offers you can cover with your skillset!')
     
     # Load data
@@ -185,7 +184,7 @@ elif page == "SkillSet":
     skills_selection = st.multiselect('Select skills', skills_list, ['python', 'sql'])
     
     # Calculate and display total percentage for selected skills
-   if skills_selection:
+    if skills_selection:
         total_percentage = calculate_total_percentage(skills_selection)
         st.write(f"The total percentage of selected skills is: {total_percentage:.2f}%")
         remaining_percentage = 100 - total_percentage
@@ -215,12 +214,12 @@ elif page == "SkillSet":
     else:
         st.write("Please select at least one skill.")
 
-   # Open the GIF file in binary mode
+    # Open the GIF file in binary mode
     with open("study.gif", "rb") as file:
        # Read the contents of the file
        contents = file.read()
    
-   # Encode the contents to base64
+    # Encode the contents to base64
     data_url = base64.b64encode(contents).decode("utf-8")
    
     st.markdown(
