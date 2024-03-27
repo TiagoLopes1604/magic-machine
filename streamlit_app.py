@@ -37,9 +37,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write("<div style='text-align: center; font-size: 24px; font-weight: bold;'>Job Market Insights</div>", unsafe_allow_html=True)
+st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Job Market Insights</div>", unsafe_allow_html=True)
 st.image('jobs_per_week.PNG', caption='Jobs postings per week', width=700, use_column_width=False)
-
+st.image('slide3,2.PNG', caption='Jobs postings per weekday and per platform', width=700, use_column_width=False)
 
 
 
