@@ -204,7 +204,7 @@ if skills_selection:
 #plt.show()
 
 
-
+bar_colors = ['#EB396A', '#65BCDA']
 # Calculate total
 total = total_percentage + remaining_percentage
 
