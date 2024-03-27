@@ -204,12 +204,16 @@ elif page == "About":
     fig.add_trace(go.Bar(x=['Total'], y=[total_percentage], name='Selected Skills', marker=dict(color=bar_colors[0])))
     fig.add_trace(go.Bar(x=['Total'], y=[remaining_percentage], name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
     
-    # Update layout
+     # Update layout
     fig.update_layout(
         title='Skills Overview',
         xaxis_title='Category',
         yaxis_title='Percentage',
-        barmode
+        barmode='stack'
+    )
+    
+    # Display the chart using Streamlit
+    st.plotly_chart(fig, use_container_width=True)
 
 
 
