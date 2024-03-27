@@ -115,8 +115,8 @@ elif page == "SkillSet":
     ## Skills selection
     skills_list = df.skill.unique()
     #skills_selection = st.multiselect('Select skills', skills_list, ['python', 'sql'])
-     st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Choose your skills</div>", unsafe_allow_html=True)
-   skills_selection =  st.multiselect('', skills_list,)
+    st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Choose your skills</div>", unsafe_allow_html=True)
+    skills_selection =  st.multiselect('', skills_list)
     # Calculate and display total percentage for selected skills
     if skills_selection:
         total_percentage = calculate_total_percentage(skills_selection)
