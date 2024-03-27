@@ -141,9 +141,14 @@ if page == "Calculate your treasure":
        ##openings = postings()
        
        # Display the prediction result
-       st.write('Your Predicted Salary:', f"${print_pred}")
-       st.write('Your Predicted Salary:', f"<p style='font-size:50px;color:Red;'>${print_pred}</p>", 
-    unsafe_allow_html=True)
+       
+       st.write(
+    "<div style='text-align:center;'>"
+    f"Your Predicted Salary: <p style='font-size:200px;color:Red;display:inline;'>${print_pred}</p>"
+    "</div>",
+    unsafe_allow_html=True
+)
+
       
    
    with open("treasure.gif", "rb") as file:
