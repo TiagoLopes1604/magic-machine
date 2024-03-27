@@ -71,7 +71,7 @@ if page == "Calculate your treasure":
    checkbox_labels = ['sql', 'python', 'excel', 'power_bi', 'tableau', 'sas', 'azure', 'snowflake', 'aws', 'spark', 'looker', 'qlik']
    checkbox_states = {}
    # Create a multiselect widget to select skills
-     selected_options = st.multiselect(
+   selected_options = st.multiselect(
        label="<div style='text-align: center; font-size: 24px; font-weight: bold;'>Select skills:</div>",
        options=checkbox_labels,
        format_func=lambda x: x,
