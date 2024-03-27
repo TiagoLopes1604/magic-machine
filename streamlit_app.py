@@ -203,13 +203,17 @@ if skills_selection:
 #plt.legend()
 #plt.show()
 
-# Define custom colors
-bar_colors = ['#EB396A', '#65BCDA']
 
-# Create a bar chart using Plotly
+
+# Calculate total
+total = total_percentage + remaining_percentage
+
+# Create a Plotly figure
 fig = go.Figure()
-fig.add_trace(go.Bar(x=Total, y=total_percentage, name='Selected Skills', marker=dict(color=bar_colors[0])))
-fig.add_trace(go.Bar(x=Total, y=remaining_percentage, name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
+
+# Add traces for each category
+fig.add_trace(go.Bar(x=['Total'], y=[total_percentage], name='Selected Skills', marker=dict(color=bar_colors[0])))
+fig.add_trace(go.Bar(x=['Total'], y=[remaining_percentage], name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
 
 # Update layout
 fig.update_layout(
@@ -221,6 +225,7 @@ fig.update_layout(
 
 # Display the chart using Streamlit
 st.plotly_chart(fig, use_container_width=True)
+
 
 
 
