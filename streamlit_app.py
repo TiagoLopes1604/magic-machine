@@ -18,10 +18,10 @@ st.title('🧙‍♂️ Magic Machine')
 
 
 # Add a sidebar with navigation links
-page = st.sidebar.radio("Navigate", ["Home", "About"])
+page = st.sidebar.radio("Navigate", ["Calculate your treasure", "SkillSet"])
 
 # Render different pages based on user selection
-if page == "Home":
+if page == "Calculate your treasure":
    st.markdown('**What can this app do?**')
    st.info('"Introducing Magic Machine, your go-to companion for navigating the dynamic world of data analytics careers! With Magic Machine, new data analysts can unlock the secrets to landing their dream job in this ever-evolving industry.Providing expert insights on industry trends, Magic Machine empowers aspiring data professionals to conquer the job market with confidence. Get ready to embark on your career journey with Magic Machine – where data meets destiny!')
 
@@ -155,10 +155,9 @@ if page == "Home":
                unsafe_allow_html=True
            ) 
 
-elif page == "About":
-    st.header("About Page")
-    st.write("This is the about page. Here you can learn more about our app.")
-    st.subheader('Find out what percentage of data analyst job offers you can cover with your skillset!')
+elif page == "SkillSet":
+    
+    st.header('Find out what percentage of data analyst job offers you can cover with your skillset!')
     
     # Load data
     df = pd.read_csv('skills_occurences_income.csv')
