@@ -126,43 +126,41 @@ if page == "Calculate your treasure":
          # return None
    
    
-   # Add a button to trigger the prediction
-   if st.button('What am I worth?'):
-       if selected_options:  # Check if any option is selected
-           # Make predictions based on the selected skills
-           input_df = predict(selected_options)
-   
-           # Perform prediction using the loaded model
-           prediction = model.predict(input_df)
-           print_pred = str(np.round(prediction, 2))
-           print_pred = print_pred.strip('[]')
-      
-       
-       ##openings = postings()
-       
-       # Display the prediction result
-       
-       st.write(
-    "<div style='text-align:center;'>"
-    f"Your Predicted Salary: <p style='font-size:200px;color:Red;display:inline;'>${print_pred}</p>"
-    "</div>",
-    unsafe_allow_html=True
-)
+  # Add a button to trigger the prediction
+if st.button('What am I worth?'):
+    if selected_options:  # Check if any option is selected
+        # Make predictions based on the selected skills
+        input_df = predict(selected_options)
 
-      
-   
-   with open("treasure.gif", "rb") as file:
-               # Read the contents of the file
-           contents = file.read()
-   
-           # Encode the contents to base64
-           data_url = base64.b64encode(contents).decode("utf-8")
-   
-           # Embed the image in the app with the calculated size
-           st.markdown(
-               f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
-               unsafe_allow_html=True
-           ) 
+        # Perform prediction using the loaded model
+        prediction = model.predict(input_df)
+        print_pred = str(np.round(prediction, 2))
+        print_pred = print_pred.strip('[]')
+
+        # Display the prediction result
+        st.write(
+            "<div style='text-align:center;'>"
+            "<p style='font-size:48px;color:Red;'>Your Predicted Salary:</p>"
+            f"<p style='font-size:200px;color:Red;display:inline;'>${print_pred}</p>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+
+        # Display the GIF after the prediction
+        with open("treasure.gif", "rb") as file:
+            # Read the contents of the file
+            contents = file.read()
+
+            # Encode the contents to base64
+            data_url = base64.b64encode(contents).decode("utf-8")
+
+            # Embed the image in the app with the calculated size
+            st.markdown(
+                f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">',
+                unsafe_allow_html=True
+            )
+    else:
+        st.write("Please select at least one skill.")
 
 elif page == "SkillSet":
     st.header('Find out what percentage of data analyst job offers you can cover with your skillset!')
