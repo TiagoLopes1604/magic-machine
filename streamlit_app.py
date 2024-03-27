@@ -214,33 +214,33 @@ elif page == "SkillSet":
         
         # Check if total_percentage is less than 30% to display the GIF
         if total_percentage < 30:
-        # Open the GIF file in binary mode
-        with open("study.gif", "rb") as file:
-            # Read the contents of the file
-            contents = file.read()
-       
-        # Encode the contents to base64
-        data_url = base64.b64encode(contents).decode("utf-8")
-       
-        st.markdown(
-           f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
-           unsafe_allow_html=True
-        )
+            # Open the GIF file in binary mode
+            with open("study.gif", "rb") as file:
+                # Read the contents of the file
+                contents = file.read()
+           
+            # Encode the contents to base64
+            data_url = base64.b64encode(contents).decode("utf-8")
+           
+            st.markdown(
+               f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
+               unsafe_allow_html=True
+            )
         else:
-              # Open the other GIF file in binary mode
-              with open("resp.gif", "rb") as file:
-                  # Read the contents of the file
-                  contents = file.read()
-             
-              # Encode the contents to base64
-              data_url = base64.b64encode(contents).decode("utf-8")
-             
-              st.markdown(
-                 f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
-                 unsafe_allow_html=True
-         )
-else:
-    st.write("Please select at least one skill.")
+            # Open the other GIF file in binary mode
+            with open("resp.gif", "rb") as file:
+                # Read the contents of the file
+                contents = file.read()
+           
+            # Encode the contents to base64
+            data_url = base64.b64encode(contents).decode("utf-8")
+           
+            st.markdown(
+               f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
+               unsafe_allow_html=True
+            )
+    else:
+        st.write("Please select at least one skill.")
 
 
 
