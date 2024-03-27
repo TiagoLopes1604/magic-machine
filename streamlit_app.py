@@ -168,6 +168,6 @@ with open("treasure.gif", "rb") as file:
 
         # Embed the image in the app with the calculated size
         st.markdown(
-            f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 500px; height: 500px;">', 
+            f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
             unsafe_allow_html=True
         ) 
