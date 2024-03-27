@@ -12,6 +12,17 @@ import pickle
 #import matplotlib.pyplot as plt
 import plotly.graph_objs as go
 # Page title
+
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: lightblue;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
 
