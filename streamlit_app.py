@@ -72,12 +72,12 @@ if page == "Calculate your treasure":
    checkbox_states = {}
    # Create a multiselect widget to select skills
    selected_options = st.multiselect(
-    label="<div style='text-align: center; font-size: 24px; font-weight: bold;'>Select skills:</div>",
+    label="Select skills:",
     options=checkbox_labels,
-    format_func=lambda x: x,
+    format_func=lambda x: f"<div style='text-align: center;'>{x}</div>",
     key="skills_multiselect",  # Add a unique key to avoid re-renders
     unsafe_allow_html=True  # Add this line
-  )
+)
 
 
    
