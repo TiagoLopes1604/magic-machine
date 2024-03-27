@@ -9,7 +9,7 @@ import time
 import zipfile
 import base64
 import pickle
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 # Page title
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
@@ -194,10 +194,18 @@ if skills_selection:
 if skills_selection:
     remaining_percentage = 100 - total_percentage
     st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
-plt.figure(figsize=(8, 6))
-plt.bar('Total', total_percentage, color='#EB396A', label='Selected Skills')
-plt.bar('Total', remaining_percentage, color='#65BCDA', label='Skills Still to Learn', bottom=total_percentage)
-plt.xlabel('Category')
-plt.ylabel('Percentage')
-plt.legend()
-plt.show()
+#plt.figure(figsize=(8, 6))
+#plt.bar('Total', total_percentage, color='#EB396A', label='Selected Skills')
+#plt.bar('Total', remaining_percentage, color='#65BCDA', label='Skills Still to Learn', bottom=total_percentage)
+#plt.xlabel('Category')
+#plt.ylabel('Percentage')
+#plt.legend()
+#plt.show()
+
+st.bar_chart(
+    data={
+        'Total': total_percentage + remaining_percentage
+    },
+    colors=bar_colors,
+    use_container_width=True
+)
