@@ -17,7 +17,7 @@ import plotly.graph_objs as go
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
 st.title('🧙‍♂️ Magic Machine')
 
-# Page title
+#  Page title
 st.title('Streamlit Multi-Page App')
 
 # Add a sidebar with navigation links
