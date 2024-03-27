@@ -43,8 +43,8 @@ st.image('slide3,2.PNG', caption='Jobs postings per weekday and per platform', w
 st.image('slide4.PNG', caption='Jobs postings per location', width=700, use_column_width=False)
 
 st.write("<div style='text-align: center; font-size: 48px; font-weight: bold;'>Required Skills</div>", unsafe_allow_html=True)
-st.image('5a.PNG', caption='Number of mentions per skill', width=700, use_column_width=False)
-st.image('5b.PNG', caption='% by Category and Skill mentions over time', width=700, use_column_width=False)
+st.image('slide5a.PNG', caption='Number of mentions per skill', width=700, use_column_width=False)
+st.image('slide5b.PNG', caption='% by Category and Skill mentions over time', width=700, use_column_width=False)
 
 
 
