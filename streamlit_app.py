@@ -140,8 +140,8 @@ if st.button('What am I worth?'):
         # Display the prediction result
         st.write(
             "<div style='text-align:center;'>"
-            "<p style='font-size:48px;color:Red;'>Your Predicted Salary:</p>"
-            f"<p style='font-size:200px;color:Red;display:inline;'>${print_pred}</p>"
+            "<p style='font-size:70px;color:Black;'>Your Predicted Salary:</p>"
+            f"<p style='font-size:125px;color:Red;display:inline;'>${print_pred}</p>"
             "</div>",
             unsafe_allow_html=True
         )
