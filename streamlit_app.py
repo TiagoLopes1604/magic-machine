@@ -21,16 +21,7 @@ st.info('"Introducing Magic Machine, your go-to companion for navigating the dyn
 audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
 audio_bytes = audio_file.read()
 st.audio(audio_bytes, format="audio/ogg")
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #f0f2f6; /* You can change the color code here */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 
 import base64
@@ -181,3 +172,13 @@ with open("treasure.gif", "rb") as file:
             f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
             unsafe_allow_html=True
         ) 
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f2f6; /* You can change the color code here */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
