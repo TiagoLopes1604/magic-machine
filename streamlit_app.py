@@ -56,6 +56,8 @@ if page == "Calculate your treasure":
        input_df = pd.DataFrame(input_data, columns=checkbox_labels)
        input_df = input_df.astype(int)
        return input_df
+   with open("model.pkl", "rb") as f:
+    model = pickle.load(f)
 
    # Add button to trigger prediction
    if st.button("What's my bounty?"):
