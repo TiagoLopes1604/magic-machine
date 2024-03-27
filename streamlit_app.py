@@ -168,7 +168,7 @@ with open("treasure.gif", "rb") as file:
 
 st.subheader('Find out what percentage of data anaylst job offers you can cover with your skillset!')
 # Load data
-df = pd.read_csv('data/skills_occurences_income.csv')
+df = pd.read_csv('skills_occurences_income.csv')
 # df.year = df.year.astype('int')
 # Function to calculate percentage
 def calculate_percentage(skill_input):
