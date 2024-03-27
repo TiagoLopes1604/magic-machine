@@ -9,7 +9,7 @@ import time
 import zipfile
 import base64
 import pickle
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import plotly.graph_objs as go
 # Page title
 st.set_page_config(page_title='Magic Machine', page_icon='🧙‍♂️')
@@ -195,29 +195,12 @@ if skills_selection:
 if skills_selection:
     remaining_percentage = 100 - total_percentage
     st.write(f"The total percentage of remaining skills is: {remaining_percentage:.2f}%")
-#plt.figure(figsize=(8, 6))
-#plt.bar('Total', total_percentage, color='#EB396A', label='Selected Skills')
-#plt.bar('Total', remaining_percentage, color='#65BCDA', label='Skills Still to Learn', bottom=total_percentage)
-#plt.xlabel('Category')
-#plt.ylabel('Percentage')
-#plt.legend()
-#plt.show()
+plt.figure(figsize=(8, 6))
+plt.bar('Total', total_percentage, color='#EB396A', label='Selected Skills')
+plt.bar('Total', remaining_percentage, color='#65BCDA', label='Skills Still to Learn', bottom=total_percentage)
+plt.xlabel('Category')
+plt.ylabel('Percentage')
+plt.legend()
+plt.show()
 
-# Define custom colors
-bar_colors = ['#EB396A', '#65BCDA']
 
-# Create a bar chart using Plotly
-fig = go.Figure()
-fig.add_trace(go.Bar(x=categories, y=total_percentage, name='Selected Skills', marker=dict(color=bar_colors[0])))
-fig.add_trace(go.Bar(x=categories, y=remaining_percentage, name='Skills Still to Learn', marker=dict(color=bar_colors[1])))
-
-# Update layout
-fig.update_layout(
-    title='Skills Overview',
-    xaxis_title='Category',
-    yaxis_title='Percentage',
-    barmode='stack'
-)
-
-# Display the chart using Streamlit
-st.plotly_chart(fig, use_container_width=True)
