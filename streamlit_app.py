@@ -215,17 +215,17 @@ elif page == "SkillSet":
     st.plotly_chart(fig, use_container_width=True)
 
    # Open the GIF file in binary mode
-   with open("study.gif", "rb") as file:
+    with open("study.gif", "rb") as file:
        # Read the contents of the file
        contents = file.read()
    
    # Encode the contents to base64
-   data_url = base64.b64encode(contents).decode("utf-8")
+    data_url = base64.b64encode(contents).decode("utf-8")
    
-   st.markdown(
+    st.markdown(
        f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
        unsafe_allow_html=True
-   )
+    )
 
 
 
