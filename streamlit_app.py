@@ -32,9 +32,9 @@ if page == "Calculate your treasure":
    st.info('"Introducing Magic Machine, your go-to companion for navigating the dynamic world of data analytics careers! With Magic Machine, new data analysts can unlock the secrets to landing their dream job in this ever-evolving industry.Providing expert insights on industry trends, Magic Machine empowers aspiring data professionals to conquer the job market with confidence. Get ready to embark on your career journey with Magic Machine – where data meets destiny!')
 
    # Add audio file
-   audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
-   audio_bytes = audio_file.read()
-   st.audio(audio_bytes, format="audio/ogg")
+   #audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
+   #audio_bytes = audio_file.read()
+   #st.audio(audio_bytes, format="audio/ogg")
 
    # Add GIF image
    with open("giphy.gif", "rb") as file:
@@ -165,6 +165,10 @@ elif page == "SkillSet":
                f'<img src="data:image/gif;base64,{data_url}" alt="gif" style="width: 700px; height: 600px;">', 
                unsafe_allow_html=True
             )
+            # Add audio file
+            audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
+            audio_bytes = audio_file.read()
+   st.audio(audio_bytes, format="audio/ogg")
     else:
         st.write("Please select at least one skill.")
 
