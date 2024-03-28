@@ -168,7 +168,7 @@ elif page == "SkillSet":
             # Add audio file
             audio_file = open("PiratesOfTheCaribbeanThemeSong.mp3", "rb")
             audio_bytes = audio_file.read()
-   st.audio(audio_bytes, format="audio/ogg")
+            st.audio(audio_bytes, format="audio/ogg")
     else:
         st.write("Please select at least one skill.")
 
